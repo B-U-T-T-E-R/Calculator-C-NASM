@@ -1,25 +1,22 @@
-﻿section .text
+section .text
 
-global calc
+global Addition
+global Subtraction
+global Product
+global Division
 
-calc:
-    mov r9, rdx
-    
-    mov rax, rcx
-    add rax, r9
-    mov [r8], rax
+Addition:
+    addsd xmm0, xmm1
+    ret
 
-    mov rax, rcx
-    sub rax, r9
-    mov [r8+8], rax
+Subtraction:
+    subsd xmm0, xmm1
+    ret
 
-    mov rax, rcx
-    imul rax, r9
-    mov [r8+16], rax
+Product:
+    mulsd xmm0, xmm1
+    ret
 
-    mov rax, rcx
-    cqo
-    idiv r9
-    mov [r8+24], rdx
-    
+Division:
+    divsd xmm0, xmm1
     ret

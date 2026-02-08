@@ -7,5 +7,5 @@
     <File Path=".gitignore" />
     <File Path="README.md" />
   </Folder>
-  <Project Path="CNASM/CNASM.vcxproj" />
+  <Project Path="CNASM/CNASM.vcxproj" Id="8a3720c6-03da-42b0-a1f1-3c4e4515018b" />
 </Solution>

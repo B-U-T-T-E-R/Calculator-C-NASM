@@ -1,32 +1,70 @@
-﻿# X64 Arithmetic: NASM + C Integration
+﻿# X64 Floating-Point Calculator: NASM + C Integration
+## 🇺🇸 English Version
 
-A high-performance calculation bridge between **C** and **x86-64 Assembly (NASM)** developed in **Visual Studio 2026**.
+### 🚀 Overview
+A high-performance floating-point calculator demonstrating seamless integration between **C** and **x86-64 Assembly (NASM)** using **SSE2 instructions**.
 
-## 🚀 Overview
-This project demonstrates how to pass data between a high-level C interface and a low-level Assembly implementation. It performs basic arithmetic operations using direct CPU registers and the Windows x64 calling convention.
+### 🛠️ Features
+- **Basic Operations**: Addition, subtraction, multiplication, division
+- **Assembly Optimization**: All calculations in NASM with SSE2
+- **Robust Input**: Supports both `.` and `,` formats, error validation
+- **Division Safety**: Zero-check with `fabs(y) < 1e-9`
 
-## 🛠️ Features
-- **Sum**: Addition via `add` instruction.
-- **Difference**: Subtraction via `sub` instruction.
-- **Product**: Signed multiplication via `imul`.
-- **Remainder**: Modulo operation using `idiv` with proper `cqo` sign extension to prevent division errors.
+### 🔧 Technical Stack
+- **C11**: Interface and input handling
+- **NASM x86-64**: Assembly computations
+- **Visual Studio**: Development environment
+- **x64 Windows**: Calling convention
 
-## 🔧 Technical Stack
-- **Language**: C11 / NASM (x86-64)
-- **Assembler**: [NASM](https://www.nasm.us)
-- **IDE**: Visual Studio 2026
-- **Architecture**: x64 (Windows Calling Convention)
+### 📂 Project Structure
+- `main.c`: Interface, data input, assembly function calls
+- `func.asm`: Floating-point operations in assembly
 
-## 🔨 Build Instructions
-To compile this project, ensure NASM is installed on your system:
-1. Open the project in **Visual Studio**.
-2. Right-click on `func.asm` -> **Properties**.
-3. Set **Item Type** to **Custom Build Tool**.
-4. Use the following Command Line:
-   `"PATH_TO_NASM\nasm.exe" -f win64 "%(FullPath)" -o "$(IntDir)%(Filename).obj"`
-5. Set **Outputs** to: `$(IntDir)%(Filename).obj`
-6. Build and run in **x64** mode.
+### 🔨 Build Instructions
+1. Install NASM from the official website
+2. Configure `func.asm` as Custom Build Tool in Visual Studio
+3. Build command: `nasm.exe -f win64 "func.asm"`
+4. Build project for **x64** platform
 
-## 📂 Project Structure
-- `main.c`: User interface, input handling, and external function calls.
-- `func.asm`: Core arithmetic logic implemented in NASM.
+### 💡 Key Features
+- Direct XMM0-XMM1 register manipulation
+- Zero-copy data transfer between C and assembly
+- Dual decimal separator format support
+- Educational example of multi-language integration
+
+---
+
+## 🇷🇺 Русская версия
+
+### 🚀 Описание
+Высокопроизводительный калькулятор с плавающей точкой, демонстрирующий интеграцию **C** и **ассемблера x86-64** с использованием **SSE2 инструкций**.
+
+### 🛠️ Возможности
+- **Базовые операции**: Сложение, вычитание, умножение, деление
+- **Ассемблерная оптимизация**: Все вычисления в NASM с SSE2
+- **Надёжный ввод**: Поддержка форматов `.` и `,`, проверка ошибок
+- **Защита от деления на ноль**: Проверка `fabs(y) < 1e-9`
+
+### 🔧 Технологии
+- **C11**: Интерфейс и обработка ввода
+- **NASM x86-64**: Вычисления в ассемблере
+- **Visual Studio**: Среда разработки
+- **x64 Windows**: Соглашение о вызовах
+
+### 📂 Структура проекта
+- `main.c`: Интерфейс, ввод данных, вызов ассемблерных функций
+- `func.asm`: Ассемблерные реализации операций с плавающей точкой
+
+### 🔨 Инструкция по сборке
+1. Установите NASM с официального сайта
+2. В Visual Studio настройте `func.asm` как Custom Build Tool
+3. Команда сборки: `nasm.exe -f win64 "func.asm"`
+4. Соберите проект для платформы **x64**
+
+### 💡 Особенности реализации
+- Прямая работа с регистрами XMM0-XMM1
+- Нулевое копирование данных между C и ассемблером
+- Поддержка обоих форматов десятичных разделителей
+- Образовательный пример интеграции языков разного уровня
+
+*Project demonstrates low-level computation optimization on modern x86-64 hardware. / Проект демонстрирует низкоуровневую оптимизацию вычислений на современном x86-64 оборудовании.*
